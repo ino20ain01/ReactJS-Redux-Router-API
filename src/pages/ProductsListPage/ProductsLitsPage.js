@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import apiCaller from '../../utils/apiCaller'
 import ProductsList from '../../components/ProductsList/ProductsList'
 import ProductItem from '../../components/ProductItem/ProductItem'
@@ -44,9 +45,9 @@ class ProductsLitsPage extends Component {
 
         return (
         <div className="col-md-12">
-            <button type="button" className="btn btn-success mb-10">
+            <Link to="/product/add" className="btn btn-success mb-10">
                 Thêm Sản Phẩm
-            </button>
+            </Link>
             <ProductsList>
                 { this.showProducts(products) }
             </ProductsList>
