@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import ProductsList from '../../components/ProductsList/ProductsList'
 import ProductItem from '../../components/ProductItem/ProductItem'
 
@@ -23,7 +24,17 @@ class ProductsLitsPage extends Component {
 
     render() {
 
-        let { products } = this.props;
+        // let { products } = this.props;
+        let products = [];
+        axios({
+            method: 'GET',
+            url: 'http://5b291df084ce2c0014d4d12f.mockapi.io/api/products',
+
+        }).then(res => {
+            products = res.data;
+        }).catch(err => {
+            console.log(err);
+        });
 
         return (
         <div className="col-md-12">
