@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import apiCaller from '../../utils/apiCaller';
-import { actAddProductRequest } from '../../actions';
+import {
+    actAddProductRequest,
+    actGetProductRequest,
+    actUpdateProductRequest
+} from '../../actions';
 
 class ProductsLitsPage extends Component {
 
@@ -21,19 +24,20 @@ class ProductsLitsPage extends Component {
         if (match) {
             let id = match.params.id;
             if (id) {
-                apiCaller(`products/${id}`, 'GET', null)
-                    .then(res => {
-                        if (res.data) {
-                            let data = res.data
-                            this.setState({
-                                id: data.id,
-                                txtName: data.name,
-                                txtPrice: data.price,
-                                chkbStatus: data.status
-                            });
-                        }
-                    });
+                this.props.onEditProduct(id);
             }
+        }
+    }
+
+    componentWillReceiveProps(nextprops) {
+        if (nextprops && nextprops.itemEditing) {
+            let { itemEditing } = nextprops;
+            this.setState({
+                id: itemEditing.id,
+                txtName: itemEditing.name,
+                txtPrice: itemEditing.price,
+                chkbStatus: itemEditing.status
+            });
         }
     }
 
@@ -63,13 +67,8 @@ class ProductsLitsPage extends Component {
         let { history } = this.props;
 
         if (id) {
-            apiCaller(`products/${id}`, 'PUT', {
-                name: txtName,
-                price: txtPrice,
-                status: chkbStatus
-            }).then(res => {
-                history.goBack();
-            });
+            this.props.onUpdateProduct(product);
+            history.goBack();
         } else {
             this.props.onAddProduct(product);
             history.goBack();
@@ -133,12 +132,24 @@ class ProductsLitsPage extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        itemEditing: state.itemEditing
+    }
+}
+
 const mapDispatchToProps = (dispatch, props) => {
     return {
         onAddProduct: product => {
             dispatch(actAddProductRequest(product));
+        },
+        onEditProduct: id => {
+            dispatch(actGetProductRequest(id));
+        },
+        onUpdateProduct: product => {
+            dispatch(actUpdateProductRequest(product));
         }
     }
 }
 
-export default connect(null, mapDispatchToProps)(ProductsLitsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsLitsPage);
