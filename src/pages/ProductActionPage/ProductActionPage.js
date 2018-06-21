@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import apiCaller from '../../utils/apiCaller';
 
 class ProductsLitsPage extends Component {
@@ -25,12 +26,13 @@ class ProductsLitsPage extends Component {
     onSave = e => {
         e.preventDefault();
         let { txtName, txtPrice, chkbStatus } = this.state;
+        let { history } = this.props;
         apiCaller('products', 'POST', {
             name: txtName,
             price: txtPrice,
             status: chkbStatus
         }).then(res => {
-            console.log(res);
+            history.goBack();
         });
     }
 
@@ -77,6 +79,13 @@ class ProductsLitsPage extends Component {
                     </label>
                 </div>
                 <button type="submit" className="btn btn-success">Lưu</button>
+                &nbsp;
+                <Link
+                    to="/product-list"
+                    className="btn btn-default"
+                >
+                    Hủy
+                </Link>
             </form>
         </div>
         );
