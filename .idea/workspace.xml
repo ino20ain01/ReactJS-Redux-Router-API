@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0672a41-8231-4b09-b2d4-39e83408271e" name="Default" comment="" />
+    <list default="true" id="f0672a41-8231-4b09-b2d4-39e83408271e" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/constants/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/Config.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,11 +39,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="App.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+            <state relative-caret-position="490">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Config.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/constants/Config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="61" selection-start-column="61" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -124,7 +135,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/components/Menus/Menu.js" />
         <option value="$PROJECT_DIR$/src/constants/Actions.js" />
         <option value="$PROJECT_DIR$/src/pages/HomePage/HomePage.js" />
@@ -133,7 +143,6 @@
         <option value="$PROJECT_DIR$/src/components/ProductsList/ProductsList.js" />
         <option value="$PROJECT_DIR$/src/components/Menus/Menus.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/constants/Config.js" />
         <option value="$PROJECT_DIR$/src/utils/apiCaller.js" />
         <option value="$PROJECT_DIR$/src/components/ProductItem/ProductItem.js" />
         <option value="$PROJECT_DIR$/src/routes.js" />
@@ -146,6 +155,8 @@
         <option value="$PROJECT_DIR$/src/actions/index.js" />
         <option value="$PROJECT_DIR$/src/reducers/products.js" />
         <option value="$PROJECT_DIR$/src/pages/ProductActionPage/ProductActionPage.js" />
+        <option value="$PROJECT_DIR$/src/App.css" />
+        <option value="$PROJECT_DIR$/src/constants/Config.js" />
       </list>
     </option>
   </component>
@@ -166,7 +177,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1616" />
@@ -322,7 +333,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41979000" />
+    <option name="totallyTimeSpent" value="42515000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -333,8 +344,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32899022" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32841823" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.249375" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32841823" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.249375" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297587" />
@@ -685,13 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/Config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -748,8 +752,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+        <state relative-caret-position="490">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/Config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="61" selection-start-column="61" selection-end-column="61" />
         </state>
       </provider>
     </entry>
