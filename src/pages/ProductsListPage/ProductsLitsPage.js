@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import apiCaller from '../../utils/apiCaller'
 import ProductsList from '../../components/ProductsList/ProductsList'
 import ProductItem from '../../components/ProductItem/ProductItem'
+import { actFetchProductsRequest } from "../../actions";
 
 class ProductsLitsPage extends Component {
 
@@ -15,12 +16,7 @@ class ProductsLitsPage extends Component {
     }
 
     componentDidMount() {
-        apiCaller('products', 'GET', null)
-            .then(res => {
-                this.setState({
-                    products: res.data
-                });
-            });
+        this.props.fetchAllProducts();
     }
 
     showProducts = products => {
@@ -70,7 +66,7 @@ class ProductsLitsPage extends Component {
     }
 
     render() {
-        let { products } = this.state;
+        let { products } = this.props;
 
         return (
         <div className="col-md-12">
@@ -91,4 +87,12 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(ProductsLitsPage);
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        fetchAllProducts: () => {
+            dispatch(actFetchProductsRequest());
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsLitsPage);
