@@ -14,6 +14,27 @@ class ProductsLitsPage extends Component {
         }
     }
 
+    componentDidMount() {
+        let { match } = this.props;
+        if (match) {
+            let id = match.params.id;
+            if (id) {
+                apiCaller(`products/${id}`, 'GET', null)
+                    .then(res => {
+                        if (res.data) {
+                            let data = res.data
+                            this.setState({
+                                id: data.id,
+                                txtName: data.name,
+                                txtPrice: data.price,
+                                chkbStatus: data.status
+                            });
+                        }
+                    });
+            }
+        }
+    }
+
     onChange = e => {
         let target = e.target,
             name = target.name,
@@ -25,15 +46,31 @@ class ProductsLitsPage extends Component {
 
     onSave = e => {
         e.preventDefault();
-        let { txtName, txtPrice, chkbStatus } = this.state;
+        let {
+            id,
+            txtName,
+            txtPrice,
+            chkbStatus
+        } = this.state;
         let { history } = this.props;
-        apiCaller('products', 'POST', {
-            name: txtName,
-            price: txtPrice,
-            status: chkbStatus
-        }).then(res => {
-            history.goBack();
-        });
+
+        if (id) {
+            apiCaller(`products/${id}`, 'PUT', {
+                name: txtName,
+                price: txtPrice,
+                status: chkbStatus
+            }).then(res => {
+                history.goBack();
+            });
+        } else {
+            apiCaller('products', 'POST', {
+                name: txtName,
+                price: txtPrice,
+                status: chkbStatus
+            }).then(res => {
+                history.goBack();
+            });
+        }
     }
 
     render() {
@@ -74,6 +111,7 @@ class ProductsLitsPage extends Component {
                             name="chkbStatus"
                             value={ chkbStatus }
                             onChange={ this.onChange }
+                            checked={ chkbStatus }
                         />
                         Còn hàng
                     </label>

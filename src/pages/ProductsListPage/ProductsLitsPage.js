@@ -70,7 +70,6 @@ class ProductsLitsPage extends Component {
     }
 
     render() {
-
         let { products } = this.state;
 
         return (

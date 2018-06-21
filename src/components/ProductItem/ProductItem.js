@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 
 class ProductItem extends Component {
 
@@ -26,9 +27,12 @@ class ProductItem extends Component {
                  </span>
                 </td>
                 <td>
-                    <button type="button" className="btn btn-primary">
+                    <Link
+                        className="btn btn-primary"
+                        to={`/product/${product.id}/edit`}
+                    >
                         Sửa
-                    </button>
+                    </Link>
                     &nbsp;
                     <button
                         type="button"
