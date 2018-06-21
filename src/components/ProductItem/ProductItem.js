@@ -2,6 +2,13 @@ import React, {Component} from 'react';
 
 class ProductItem extends Component {
 
+    onDelete = id => {
+        let { onDelete } = this.props;
+        if (confirm('Bạn chắc chắn muốn xóa?')) { // eslint-disable-line
+            onDelete(id);
+        }
+    }
+
     render() {
 
         let { product, index } = this.props;
@@ -23,7 +30,11 @@ class ProductItem extends Component {
                         Sửa
                     </button>
                     &nbsp;
-                    <button type="button" className="btn btn-danger">
+                    <button
+                        type="button"
+                        className="btn btn-danger"
+                        onClick={ () => this.onDelete(product.id) }
+                    >
                         Xóa
                     </button>
                 </td>

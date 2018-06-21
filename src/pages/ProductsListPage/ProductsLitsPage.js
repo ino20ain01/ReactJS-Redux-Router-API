@@ -32,11 +32,41 @@ class ProductsLitsPage extends Component {
                         key={ index }
                         product={ product }
                         index={ index }
+                        onDelete={ this.onDelete }
                     />
                 );
             });
         }
         return result
+    }
+
+    onDelete = id => {
+        let { products } = this.state;
+        apiCaller(`products/${id}`, 'DELETE', null)
+            .then(res => {
+                if (res.status === 200) {
+                    let index = this.findIndex(products, id);
+                    if (index !== -1) {
+                        products.splice(index, 1);
+                        this.setState({
+                            products: products
+                        });
+                    };
+                }
+            });
+    }
+
+    findIndex = (products, id) => {
+        let result = -1;
+        if (products.length) {
+            products.forEach((product, index) => {
+                if (product.id === id) {
+                    result = index;
+                    return false;
+                }
+            });
+        }
+        return result;
     }
 
     render() {
