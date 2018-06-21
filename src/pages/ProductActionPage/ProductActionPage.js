@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import apiCaller from '../../utils/apiCaller';
+import { actAddProductRequest } from '../../actions';
 
 class ProductsLitsPage extends Component {
 
@@ -52,6 +54,12 @@ class ProductsLitsPage extends Component {
             txtPrice,
             chkbStatus
         } = this.state;
+        let product = {
+            id: id,
+            name: txtName,
+            price: txtPrice,
+            status: chkbStatus
+        };
         let { history } = this.props;
 
         if (id) {
@@ -63,13 +71,8 @@ class ProductsLitsPage extends Component {
                 history.goBack();
             });
         } else {
-            apiCaller('products', 'POST', {
-                name: txtName,
-                price: txtPrice,
-                status: chkbStatus
-            }).then(res => {
-                history.goBack();
-            });
+            this.props.onAddProduct(product);
+            history.goBack();
         }
     }
 
@@ -130,4 +133,12 @@ class ProductsLitsPage extends Component {
     }
 }
 
-export default ProductsLitsPage;
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        onAddProduct: product => {
+            dispatch(actAddProductRequest(product));
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(ProductsLitsPage);
